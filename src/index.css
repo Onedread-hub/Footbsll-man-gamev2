@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #090f17;
+    --fm-bg: #090f17;
+    --fm-card: #101926;
+    --fm-header: #152233;
+    --fm-border: #223347;
+    --fm-blue: #0284c7;
+    --fm-cyan: #38bdf8;
+    --pitch-dark: #0f3d18;
+    --pitch-light: #164f20;
+    --pitch-lines: rgba(255, 255, 255, 0.85);
+    --text: #e2e8f0;
+    --accent: #ffd54f;
+    --red: #ef4444;
+    --cyan: #38bdf8;
+    --green: #10b981;
+    --blue: #38bdf8;
+    --dim: #64748b;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography Utility Classes */
+.font-arcade {
+  font-family: "Press Start 2P", monospace;
+}
+
+.font-vt323 {
+  font-family: "VT323", monospace;
+}
+
+.font-silkscreen {
+  font-family: "Silkscreen", monospace;
+}
+
+.font-mono-tight {
+  font-family: "Fira Code", monospace;
+}
+
+/* FM2010 Panel & Data Styles */
+.fm-panel {
+  background: #101926;
+  border: 1px solid #223347;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.fm-panel-header {
+  background: linear-gradient(180deg, #182638 0%, #131e2d 100%);
+  border-bottom: 1px solid #223347;
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+.fm-table-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.fm-table-row:hover {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.fm-continue-btn {
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+  transition: all 0.15s ease;
+}
+
+.fm-continue-btn:hover {
+  background: linear-gradient(180deg, #0369a1 0%, #075985 100%);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+  transform: translateY(-1px);
+}
+
+.fm-continue-btn:active {
+  transform: translateY(0);
+}
+
+/* FM2010 Top Navigation Tab Strip */
+.fm-tabs-strip {
+  background: linear-gradient(180deg, #131e2c 0%, #0c141e 100%);
+  border-bottom: 1px solid #223347;
+}
+
+.fm-tab {
+  background: transparent;
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-right: 1px solid #1a2737;
+  border-bottom: 2px solid transparent;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fm-tab:hover {
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.fm-tab-active {
+  color: #38bdf8;
+  background: linear-gradient(180deg, #1e2e42 0%, #152233 100%);
+  border-bottom: 2px solid #38bdf8;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+.fm-card-subtle {
+  background: #0d1520;
+  border: 1px solid #1f2e42;
+  border-radius: 4px;
+}
+
+/* Retro CRT Monitor Bezel & Frame */
+.crt-chassis {
+  background: radial-gradient(circle at 50% 50%, #0d160d 0%, #050905 100%);
+  border: 4px solid #1a331a;
+  border-top-color: #274d27;
+  border-left-color: #274d27;
+  border-bottom-color: #0d1a0d;
+  border-right-color: #0d1a0d;
+  box-shadow: 
+    0 0 0 2px #000000,
+    0 10px 30px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(0, 230, 118, 0.08);
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Authentic CRT Screen Curvature & Vignette */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.65);
+}
+
+.crt-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.35) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.04),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.04)
+  );
+  z-index: 15;
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+  z-index: 16;
+}
+
+/* Fullscreen CRT Scanlines Overlay */
+.crt-overlay-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.22) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.025),
+    rgba(0, 255, 0, 0.015),
+    rgba(0, 0, 255, 0.025)
+  );
+  background-size: 100% 3px, 3px 100%;
+}
+
+.crt-vignette-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
+}
+
+/* Glow & Phosphor Effects */
+.arcade-glow {
+  text-shadow: 0 0 4px rgba(0, 230, 118, 0.8), 0 0 10px rgba(0, 230, 118, 0.35);
+}
+
+.arcade-amber {
+  text-shadow: 0 0 5px rgba(255, 213, 79, 0.85), 0 0 12px rgba(255, 213, 79, 0.4);
+}
+
+.arcade-cyan {
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.85), 0 0 12px rgba(0, 229, 255, 0.4);
+}
+
+.arcade-red {
+  text-shadow: 0 0 5px rgba(255, 59, 48, 0.85), 0 0 12px rgba(255, 59, 48, 0.4);
+}
+
+.arcade-white {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Arcade Bevel Box */
+.arcade-panel {
+  background: #091209;
+  border: 2px solid #204d20;
+  border-top-color: #327532;
+  border-left-color: #327532;
+  border-bottom-color: #102610;
+  border-right-color: #102610;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.arcade-button {
+  background: #143014;
+  border: 2px solid #2e7d32;
+  border-top-color: #43a047;
+  border-left-color: #43a047;
+  border-bottom-color: #0b1a0b;
+  border-right-color: #0b1a0b;
+  transition: all 0.1s ease;
+}
+
+.arcade-button:hover {
+  background: #1b431b;
+  border-color: #ffd54f;
+  transform: translateY(-1px);
+}
+
+.arcade-button:active {
+  transform: translateY(1px);
+  border-top-color: #0b1a0b;
+  border-left-color: #0b1a0b;
+  border-bottom-color: #43a047;
+  border-right-color: #43a047;
+}
+
+/* Custom retro scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050a05;
+  border-left: 1px solid #163616;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #204d20;
+  border: 1px solid #163616;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd54f;
+}

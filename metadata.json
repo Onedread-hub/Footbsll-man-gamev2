@@ -1,0 +1,6 @@
+{
+  "name": "ASCII Football Manager 2026",
+  "description": "Retro ASCII-style football management simulation featuring dynamic pitch visualizer, turn-based tactics, full league season, and match commentary.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
